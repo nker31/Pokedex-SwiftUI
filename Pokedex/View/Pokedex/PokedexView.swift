@@ -10,19 +10,34 @@ import SwiftUI
 struct PokedexView: View {
     @EnvironmentObject var pokemonViewModel: PokemonViewModel
     @State private var pokemonData: [Pokemon]? = nil
-    let columns = [
+    @State private var isDisplayTwoColums: Bool = true
+
+    let twoColumns = [
             GridItem(.fixed(170), spacing: 15),
             GridItem(.fixed(170), spacing: 15)
             
         ]
+    
+    let threeColumns = [
+        GridItem(.fixed(100), spacing: 20),
+        GridItem(.fixed(100), spacing: 20),
+        GridItem(.fixed(100), spacing: 20)
+    ]
     var body: some View {
         NavigationStack{
             if let pokemonData = pokemonData{
                 ScrollView{
                     Spacer().frame(height: 15)
-                    LazyVGrid(columns: columns, spacing: 15,content: {
+                    LazyVGrid(columns: isDisplayTwoColums ? twoColumns: threeColumns, spacing: 15,content: {
                         ForEach(pokemonData, id: \.name) { pokemon in
-                            PokemonComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                            
+                            if(isDisplayTwoColums){
+                                PokemonComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                            }
+                            else{
+                                // display grid 3 colums
+                                PokemonImageComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                            }
                         }
                     })
                 }
@@ -32,9 +47,9 @@ struct PokedexView: View {
                 .toolbar(content: {
                                 ToolbarItem(placement: .navigationBarLeading) {
                                     Button(action: {
-                                        print("Gallary Clicked")
+                                        isDisplayTwoColums.toggle()
                                     }, label: {
-                                        Image(systemName: "rectangle.grid.2x2")
+                                        Image(systemName: isDisplayTwoColums ? "square.grid.3x3" : "rectangle.grid.2x2" )
                                             .foregroundStyle(Color(red: 0.957, green: 0.455, blue: 0.455))
                                     })
                                     
@@ -77,5 +92,5 @@ struct PokedexView: View {
 }
 
 #Preview {
-    PokedexView()
+    PokedexView().environmentObject(PokemonViewModel())
 }
