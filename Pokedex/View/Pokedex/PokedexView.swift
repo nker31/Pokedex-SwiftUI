@@ -92,7 +92,7 @@ struct PokedexView: View {
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 NavigationLink(destination: {
-                                    SearchView()
+                                    SearchView().environmentObject(pokemonViewModel)
                                 }, label: {
                                     Image(systemName: "magnifyingglass")
                                         .foregroundStyle(Color(red: 0.957, green: 0.455, blue: 0.455))
