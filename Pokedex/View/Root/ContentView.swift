@@ -47,7 +47,9 @@ struct ContentView: View {
         }
         .task {
             await authViewModel.fetchUser()
-            let loadMyPokemon = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
+            if authViewModel.userSession != nil{
+                let loadMyPokemon = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
+            }
         }
     }
 }
