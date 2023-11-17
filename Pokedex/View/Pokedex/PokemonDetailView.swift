@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PokemonDetailView: View {
     @EnvironmentObject var pokemonViewModel: PokemonViewModel
+    @EnvironmentObject var myPokemonViewModel: MyPokemonViewModel
     @State var pokemon:Pokemon
+    @State var isLike = false
     var body: some View {
         VStack{
 //           Start Pokemon pic box
@@ -144,11 +146,39 @@ struct PokemonDetailView: View {
             Spacer()
             
         }
+        .task {
+            if(myPokemonViewModel.myPokemonIDs.contains(pokemon.id)){
+                isLike = true
+            }else{
+                isLike = false
+            }
+        }
+        .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                Task{
+                                    await myPokemonViewModel.addPokemon(pokemonID: pokemon.id )
+                                    if(myPokemonViewModel.myPokemonIDs.contains(pokemon.id)){
+                                        isLike = true
+                                    }else{
+                                        isLike = false
+                                    }
+                                }
+                                
+                                
+                            }, label: {
+                                Image(systemName: isLike ? "heart.fill": "heart")
+                            })
+                        }
+                    }
+        )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }
 }
 
 #Preview {
-    PokemonDetailView(pokemon: MOCK_POKEMON[0]).environmentObject(PokemonViewModel())
+    NavigationStack{
+        PokemonDetailView(pokemon: MOCK_POKEMON[0]).environmentObject(PokemonViewModel())
+    }
 }

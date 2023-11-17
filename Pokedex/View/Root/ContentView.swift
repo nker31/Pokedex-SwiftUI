@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var pokemonViewModel: PokemonViewModel
+    @EnvironmentObject var myPokemonViewModel: MyPokemonViewModel
 
     var body: some View {
         Group{
@@ -26,6 +27,7 @@ struct ContentView: View {
                         Image(systemName: "heart.text.square")
                         Text("My Pokemon")
                     }.tint(Color(red: 0.957, green: 0.455, blue: 0.455))
+                        
                     
                     ProfileView().tabItem {
                         Image(systemName: "person.fill")
@@ -35,11 +37,17 @@ struct ContentView: View {
                 .tint(Color(red: 0.957, green: 0.455, blue: 0.455))
                 .environmentObject(authViewModel)
                 .environmentObject(pokemonViewModel)
+                .environmentObject(myPokemonViewModel)
+                
                     
                     
             }else{
                 LoginView()
             }
+        }
+        .task {
+            await authViewModel.fetchUser()
+            let loadMyPokemon = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
         }
     }
 }

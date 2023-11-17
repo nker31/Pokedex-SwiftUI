@@ -23,10 +23,6 @@ class AuthViewModel: ObservableObject{
     
     init(){
         self.userSession = Auth.auth().currentUser
-        
-        Task(){
-            await fetchUser()
-        }
     }
     
     func signIn(withEmail email:String, password: String) async throws{

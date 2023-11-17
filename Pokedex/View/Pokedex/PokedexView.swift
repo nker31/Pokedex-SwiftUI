@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PokedexView: View {
     @EnvironmentObject var pokemonViewModel: PokemonViewModel
+    @EnvironmentObject var myPokemonViewModel: MyPokemonViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var pokemonData: [Pokemon]? = nil
     @State private var isDisplayTwoColums: Bool = true
     @State private var isFetching: Bool = true
