@@ -23,7 +23,7 @@ struct LoginView: View {
                     .scaledToFit()
                     .frame(width: 100)
                     .padding(.vertical, 30)
-//                    .border(.red)
+                
                 // form
                 VStack(spacing: 30){
                     InputView(text: $email, title: "Email", placeholder: "email")
@@ -32,6 +32,18 @@ struct LoginView: View {
                 }
                 .padding(.horizontal, 50)
                 
+                // Forgot password
+                NavigationLink(destination: {
+                    ForgotPasswordView().environmentObject(authViewModel)
+                }, label: {
+                    HStack{
+                        Spacer()
+                        Text("Forgot password").font(.subheadline)
+                        
+                    }
+                        .padding(.horizontal, 50)
+
+                })
                 
                 // sign in
                 Button(action: {
@@ -46,20 +58,24 @@ struct LoginView: View {
                 .background(Color(red: 0.957, green: 0.455, blue: 0.455))
                 .foregroundColor(.white)
                 .cornerRadius(10)
-                .padding(.top, 30)
+                .padding(.vertical, 15)
                 .disabled(!formValid)
                 .opacity(formValid ? 1.0: 0.5)
-//                Spacer()
                 
                 // sign up
                 NavigationLink(destination: {
                     RegisterView()
                 }, label: {
                     HStack{
-                        Text("No Account? Register")
-                        
-                    }
+                        Text("No Account?")
+                        Text("Register")
+                            .bold()
+                    }.font(.subheadline)
                 })
+                
+
+                
+                
             }
         }
     }
@@ -75,6 +91,6 @@ extension LoginView: AuthenticationFormProtocal{
 }
 
 #Preview {
-    LoginView()
+    LoginView().environmentObject(AuthViewModel())
 }
 

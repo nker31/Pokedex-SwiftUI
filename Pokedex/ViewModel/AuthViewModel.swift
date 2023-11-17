@@ -95,6 +95,16 @@ class AuthViewModel: ObservableObject{
         await fetchUser()
     }
     
+    func resetPassword(withEmail email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Failed to reset password: \(error.localizedDescription)")
+            } else {
+                print("Sent password reset email successfully")
+            }
+        }
+    }
+    
     private func updateProfileImageUrl(storageRef: StorageReference, userDocRef: DocumentReference) async {
         do {
             let downloadURL = try await storageRef.downloadURL()
@@ -138,6 +148,5 @@ class AuthViewModel: ObservableObject{
                 self.profileImageData = url
             }
         }
-        
     }
 }
