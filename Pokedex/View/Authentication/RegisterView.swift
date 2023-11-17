@@ -92,6 +92,7 @@ struct RegisterView: View {
                 Task{
                     // force unwrap caution
                     try await authViewModel.createUser(withEmail: email, password: password, firstname: firstname, lastname: lastname, profileImageData: profileImageData!)
+                    // have to handle image error here !
                 }
             }, label: {
                 Text("Register")

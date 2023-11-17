@@ -13,6 +13,7 @@ import FirebaseCore
 struct PokedexApp: App {
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var pokemonViewModel = PokemonViewModel()
+    @StateObject var myPokemonViewModel = MyPokemonViewModel()
     init(){
         FirebaseApp.configure()
     }
@@ -21,6 +22,7 @@ struct PokedexApp: App {
         WindowGroup {
             ContentView().environmentObject(authViewModel)
                 .environmentObject(pokemonViewModel)
+                .environmentObject(myPokemonViewModel)
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-
+    @EnvironmentObject var myPokemonViewModel: MyPokemonViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var isPresentWebView = false
     var body: some View {
@@ -79,6 +79,8 @@ struct ProfileView: View {
                     
                     // Log out button
                     Button(action: {
+                        // before sign out clear data in array of myPokemonViewModel
+                        myPokemonViewModel.myPokemonIDs = []
                         authViewModel.signOut()
                     }, label: {
                         Text("Log out")
