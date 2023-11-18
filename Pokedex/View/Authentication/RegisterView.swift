@@ -20,11 +20,13 @@ struct RegisterView: View {
     @State private var profileImageData: Data? = nil
     
     @State var displayAlert = false
+    @State var isLoading = false
     
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         ZStack{
             
+            // Background video player
             LoopPlayerView{
                  Settings{
                      FileName("auth-video-bg")
@@ -95,21 +97,32 @@ struct RegisterView: View {
                 .padding(.horizontal, 20)
                 
                 
-                // Register
+                // Register button
                 Button(action: {
-                    
-                    Task{
-                        if let profileImage = profileImageData{
-                            // force unwrap caution
-                            try await authViewModel.createUser(withEmail: email, password: password, firstname: firstname, lastname: lastname, profileImageData: profileImageData!)
-                        }else{
-                            displayAlert.toggle()
+                    if profileImageData != nil {
+                        isLoading = true
+                        Task {
+                            do {
+                                try await authViewModel.createUser(
+                                    withEmail: email,
+                                    password: password,
+                                    firstname: firstname,
+                                    lastname: lastname,
+                                    profileImageData: profileImageData!
+                                )
+                            } catch {
+                                print("found error: \(error)")
+                            }
+                            
+                            isLoading = false
                         }
+                    } else {
+                        displayAlert.toggle()
                     }
                 }, label: {
                     Text("Register")
-                        
                 })
+
                 .frame(width: UIScreen.main.bounds.width - 40, height: 40)
                 .background(Color(red: 0.957, green: 0.455, blue: 0.455))
                 .foregroundColor(.white)
@@ -117,6 +130,12 @@ struct RegisterView: View {
                 .padding(.top, 30)
                 .disabled(!formValid)
                 .opacity(formValid ? 1.0: 0.5)
+            }
+            
+            // display progress view
+            if(isLoading){
+                PokeballProgressView()
+                
             }
         }.alert("Please upload your profile image", isPresented: $displayAlert) {
             Button("OK", role: .cancel) { }
