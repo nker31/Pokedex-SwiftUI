@@ -107,6 +107,15 @@
         "revision" : "07f7f26ded8df9645c072f220378879c4642e063",
         "version" : "1.25.1"
       }
+    },
+    {
+      "identity" : "swiftui-loop-videoplayer?ref=iosexample.com",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/The-Igor/swiftui-loop-videoplayer?ref=iosexample.com",
+      "state" : {
+        "revision" : "c79c238e20cd5229f03fd07c27123a106c78b257",
+        "version" : "1.2.0"
+      }
     }
   ],
   "version" : 2
