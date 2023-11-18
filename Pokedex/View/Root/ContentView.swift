@@ -14,12 +14,12 @@ struct ContentView: View {
 
     var body: some View {
         Group{
-            if $authViewModel.userSession != nil{
+            if authViewModel.userSession != nil{
                 TabView{
                     PokedexView().tabItem {
                         Image(systemName: "pawprint.fill")
                         Text("Pokedex")
-                    }.tint(.white)
+                    }.tint(Color(red: 0.957, green: 0.455, blue: 0.455))
                         
                     
                     MyPokemonView().tabItem {
@@ -48,7 +48,7 @@ struct ContentView: View {
         .task {
             await authViewModel.fetchUser()
             if authViewModel.userSession != nil{
-                let loadMyPokemon = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
+                _ = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
             }
         }
     }

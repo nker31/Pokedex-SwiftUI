@@ -45,17 +45,20 @@ struct MyPokemonView: View {
                         }.frame(width: UIScreen.main.bounds.width - 40)
                             .padding(.vertical, 100)
                     }else{
-                        LazyVGrid(columns: isDisplayTwoColums ? twoColumns: threeColumns , spacing: 15,content: {
-                            ForEach(filteredPokemons) { pokemon in
-                                if(isDisplayTwoColums){
-                                    PokemonComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                        if(!isFetching){
+                            LazyVGrid(columns: isDisplayTwoColums ? twoColumns: threeColumns , spacing: 15,content: {
+                                ForEach(filteredPokemons) { pokemon in
+                                    if(isDisplayTwoColums){
+                                        PokemonComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                                    }
+                                    else{
+                                        // display grid 3 colums
+                                        PokemonImageComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
+                                    }
                                 }
-                                else{
-                                    // display grid 3 colums
-                                    PokemonImageComponent(pokemon: pokemon).environmentObject(pokemonViewModel)
-                                }
-                            }
-                        })
+                            })
+                        }
+                        
                     }
                 }
                 .task {
