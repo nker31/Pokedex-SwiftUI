@@ -19,10 +19,10 @@ struct InputView: View {
                 
             if isSecureField{
                 SecureField(placeholder, text: $text)
-                    .font(.system(size: 14))
+                    .font(.system(size: 16))
             }else{
                 TextField(placeholder, text: $text)
-                    .font(.system(size: 14))
+                    .font(.system(size: 16))
             }
             Rectangle().frame(height: 1)
                 .foregroundStyle(Color(red: 0.957, green: 0.455, blue: 0.455))
