@@ -29,6 +29,8 @@
 		510F67E12B01FE8000389C24 /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F67E02B01FE8000389C24 /* PokedexView.swift */; };
 		510F67E32B01FEA100389C24 /* MyPokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F67E22B01FEA100389C24 /* MyPokemonView.swift */; };
 		511AE4EE2B07E16F00391AB2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511AE4ED2B07E16F00391AB2 /* ForgotPasswordView.swift */; };
+		513CBD722B087738009831D9 /* swiftui-loop-videoplayer in Frameworks */ = {isa = PBXBuildFile; productRef = 513CBD712B087738009831D9 /* swiftui-loop-videoplayer */; };
+		513CBD782B0880AB009831D9 /* auth-video-bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 513CBD772B0880AB009831D9 /* auth-video-bg.mp4 */; };
 		513D80FA2B04918E00A8AD9B /* PokemonImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D80F92B04918E00A8AD9B /* PokemonImageComponent.swift */; };
 		515185E72B03829E00F05DA8 /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515185E62B03829E00F05DA8 /* PokemonDetailView.swift */; };
 		51701E792B05BB3300A5D61C /* MyPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51701E782B05BB3300A5D61C /* MyPokemonViewModel.swift */; };
@@ -57,6 +59,7 @@
 		510F67E02B01FE8000389C24 /* PokedexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexView.swift; sourceTree = "<group>"; };
 		510F67E22B01FEA100389C24 /* MyPokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPokemonView.swift; sourceTree = "<group>"; };
 		511AE4ED2B07E16F00391AB2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		513CBD772B0880AB009831D9 /* auth-video-bg.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "auth-video-bg.mp4"; sourceTree = "<group>"; };
 		513D80F92B04918E00A8AD9B /* PokemonImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImageComponent.swift; sourceTree = "<group>"; };
 		515185E62B03829E00F05DA8 /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		51701E782B05BB3300A5D61C /* MyPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPokemonViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 				51008EEA2B00DA2000378300 /* FirebaseAuth in Frameworks */,
 				51008EF02B00DA2000378300 /* FirebaseStorage in Frameworks */,
 				51008EF22B00DA2000378300 /* FirebaseStorageCombine-Community in Frameworks */,
+				513CBD722B087738009831D9 /* swiftui-loop-videoplayer in Frameworks */,
 				51008EEC2B00DA2000378300 /* FirebaseFirestore in Frameworks */,
 				51008EEE2B00DA2000378300 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -107,6 +111,7 @@
 				51008ED02B00B09F00378300 /* ViewModel */,
 				51991F352B022DE100ECA2F8 /* Managers */,
 				51008EC02B00AF8100378300 /* PokedexApp.swift */,
+				513CBD772B0880AB009831D9 /* auth-video-bg.mp4 */,
 				51008EC42B00AF8200378300 /* Assets.xcassets */,
 				51008EE62B00D8FD00378300 /* GoogleService-Info.plist */,
 				51008EC62B00AF8200378300 /* Preview Content */,
@@ -231,6 +236,7 @@
 				51008EED2B00DA2000378300 /* FirebaseFirestoreSwift */,
 				51008EEF2B00DA2000378300 /* FirebaseStorage */,
 				51008EF12B00DA2000378300 /* FirebaseStorageCombine-Community */,
+				513CBD712B087738009831D9 /* swiftui-loop-videoplayer */,
 			);
 			productName = Pokedex;
 			productReference = 51008EBD2B00AF8100378300 /* Pokedex.app */;
@@ -262,6 +268,7 @@
 			mainGroup = 51008EB42B00AF8100378300;
 			packageReferences = (
 				51008EE82B00DA2000378300 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				513CBD702B087738009831D9 /* XCRemoteSwiftPackageReference "swiftui-loop-videoplayer" */,
 			);
 			productRefGroup = 51008EBE2B00AF8100378300 /* Products */;
 			projectDirPath = "";
@@ -277,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				513CBD782B0880AB009831D9 /* auth-video-bg.mp4 in Resources */,
 				51008EC82B00AF8200378300 /* Preview Assets.xcassets in Resources */,
 				51008EC52B00AF8200378300 /* Assets.xcassets in Resources */,
 				51008EE72B00D8FD00378300 /* GoogleService-Info.plist in Resources */,
@@ -524,6 +532,14 @@
 				minimumVersion = 10.17.0;
 			};
 		};
+		513CBD702B087738009831D9 /* XCRemoteSwiftPackageReference "swiftui-loop-videoplayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/The-Igor/swiftui-loop-videoplayer?ref=iosexample.com";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -551,6 +567,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 51008EE82B00DA2000378300 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		513CBD712B087738009831D9 /* swiftui-loop-videoplayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 513CBD702B087738009831D9 /* XCRemoteSwiftPackageReference "swiftui-loop-videoplayer" */;
+			productName = "swiftui-loop-videoplayer";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

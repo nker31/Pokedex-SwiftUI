@@ -24,8 +24,9 @@ struct InputView: View {
                 TextField(placeholder, text: $text)
                     .font(.system(size: 14))
             }
-            
-            Divider()
+            Rectangle().frame(height: 1)
+                .foregroundStyle(Color(red: 0.957, green: 0.455, blue: 0.455))
+//            Divider()
             
         }
     }
