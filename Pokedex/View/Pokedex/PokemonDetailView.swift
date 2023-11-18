@@ -28,6 +28,7 @@ struct PokemonDetailView: View {
     @State var isDisplayStat = false
     @State var isDisplayEvo = false
     @State var isLoading = true
+    @State var isRotating = 0.0
     
     var body: some View {
         VStack{
@@ -41,21 +42,40 @@ struct PokemonDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 25)
                 
-                Spacer().frame(height: 60)
+                Spacer().frame(height: 40)
                 
                 // Pokemon pic
-                AsyncImage(url: pokemon.imageUrl) { image in
-                    image
+                ZStack(alignment: .bottom){
+                    Image("pokeball-logo")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 180, height: 180)
-                } placeholder: {
-                    Image("pokeball")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 180, height: 180)
+                        .frame(width: 210, height: 210)
                         .opacity(0.5)
+                        .rotationEffect(.degrees(isRotating))
+                        .onAppear {
+                            withAnimation(.linear(duration: 5)
+                                .speed(0.5).repeatForever(autoreverses: false)) {
+                                    isRotating = 360.0
+                                }
+                            
+                        }
+                    
+                    AsyncImage(url: pokemon.imageUrl) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 180, height: 180)
+                    } placeholder: {
+                        Image("pokeball")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 180, height: 180)
+                            .opacity(0.5)
+                    }
+                    
+                    
                 }
+                
             }
             .frame(maxWidth: .infinity, maxHeight: 300)
             .background(LinearGradient(gradient: Gradient(colors: [Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])), .white]), startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -232,7 +252,8 @@ struct PokemonDetailView: View {
                         PokemonStatRow(title: "Speed", value: pokemon.speed, totalValue: 100)
                         PokemonStatRow(title: "Total", value: pokemon.total, totalValue: 600)
                         
-                    }.padding(20)
+                    }.tint(.red)
+                    .padding(20)
                         
                     Text("Weaknesses")
                         .foregroundStyle(Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])))

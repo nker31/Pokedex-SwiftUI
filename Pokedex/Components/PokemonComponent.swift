@@ -72,6 +72,7 @@ struct PokemonComponent: View {
             .frame(width: 170, height: 170)
             .background(Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])))
                 .cornerRadius(15)
+                .shadow(color: Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])), radius: 5, x: 2, y: 4)
         })
 
         

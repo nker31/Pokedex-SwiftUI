@@ -28,10 +28,10 @@ struct LoginView: View {
                 VStack{
                 
                     // app icon
-                    Image("Pokedex")
+                    Image("pokedex-logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100)
+                        .frame(width: 250)
                         .padding(.vertical, 30)
                     
                     // form

@@ -35,6 +35,7 @@ struct PokemonImageComponent: View {
             .frame(width: 110, height: 110)
             .background(Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])))
             .cornerRadius(10)
+            .shadow(color: Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])), radius: 2, x: 1, y: 2)
         })
     }
 }

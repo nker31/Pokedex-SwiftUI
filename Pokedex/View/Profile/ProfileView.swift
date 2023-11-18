@@ -12,7 +12,7 @@ struct ProfileView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var isPresentWebView = false
     var body: some View {
-        if let user = authViewModel.currentUser{
+        if authViewModel.currentUser != nil{
             NavigationStack{
                 VStack{
                     Group{
@@ -24,10 +24,14 @@ struct ProfileView: View {
                                     .frame(width: 130, height: 130)
                                     .cornerRadius(64)
                             } placeholder: {
-                                ProgressView()
+                                Image("pokeball-profile")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 130, height: 130)
+                                    .cornerRadius(64)
                             }
                                                 
-                            Text("\(authViewModel.currentUser?.firstname ?? "Firstname")")
+                            Text("\(authViewModel.currentUser?.firstname ?? "Firstname") \(authViewModel.currentUser?.lastname ?? "Lastname")")
                                 .font(.title2)
                                 .bold()
                                 .foregroundStyle(.white)

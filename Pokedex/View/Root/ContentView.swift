@@ -26,7 +26,7 @@ struct ContentView: View {
                         
                         Image(systemName: "heart.text.square")
                         Text("My Pokemon")
-                    }.tint(Color(red: 0.957, green: 0.455, blue: 0.455))
+                    }.tint(.white)
                         
                     
                     ProfileView().tabItem {
@@ -48,7 +48,7 @@ struct ContentView: View {
         .task {
             await authViewModel.fetchUser()
             if authViewModel.userSession != nil{
-                let loadMyPokemon = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
+                _ = await myPokemonViewModel.getMyPokemonArray(userID: authViewModel.currentUser?.id ?? "")
             }
         }
     }
