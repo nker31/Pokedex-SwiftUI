@@ -14,19 +14,19 @@ struct ContentView: View {
 
     var body: some View {
         Group{
-            if authViewModel.userSession != nil{
+            if $authViewModel.userSession != nil{
                 TabView{
                     PokedexView().tabItem {
                         Image(systemName: "pawprint.fill")
                         Text("Pokedex")
-                    }.tint(Color(red: 0.957, green: 0.455, blue: 0.455))
+                    }.tint(.white)
                         
                     
                     MyPokemonView().tabItem {
                         
                         Image(systemName: "heart.text.square")
                         Text("My Pokemon")
-                    }.tint(Color(red: 0.957, green: 0.455, blue: 0.455))
+                    }.tint(.white)
                         
                     
                     ProfileView().tabItem {
