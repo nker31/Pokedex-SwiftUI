@@ -232,7 +232,8 @@ struct PokemonDetailView: View {
                         PokemonStatRow(title: "Speed", value: pokemon.speed, totalValue: 100)
                         PokemonStatRow(title: "Total", value: pokemon.total, totalValue: 600)
                         
-                    }.padding(20)
+                    }.tint(.red)
+                    .padding(20)
                         
                     Text("Weaknesses")
                         .foregroundStyle(Color(pokemonViewModel.pokemonBGColor(type: pokemon.types[0])))
