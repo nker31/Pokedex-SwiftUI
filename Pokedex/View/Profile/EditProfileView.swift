@@ -37,7 +37,11 @@ struct EditProfileView: View {
                                 .frame(width: 130, height: 130)
                                 .cornerRadius(64)
                         } placeholder: {
-                            Circle().frame(width: 130, height: 130)
+                            Image("pokeball-profile")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 130, height: 130)
+                                .cornerRadius(64)
                         }
                     }
                     PhotosPicker(
