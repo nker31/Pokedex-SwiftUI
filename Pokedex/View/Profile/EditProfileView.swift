@@ -82,8 +82,9 @@ struct EditProfileView: View {
                 
                 VStack{
                     VStack(spacing: 20){
-                        InputView(text: $firstName, title: "First Name", placeholder: "firstname")
-                        InputView(text: $lastname, title: "Last Name", placeholder: "lastname")
+                        InputView(text: $firstName, title: "First Name", placeholder: "firstname").tint(Color(red: 0.957, green: 0.455, blue: 0.455))
+                            
+                        InputView(text: $lastname, title: "Last Name", placeholder: "lastname").tint(Color(red: 0.957, green: 0.455, blue: 0.455))
                     }.padding(.horizontal, 25)
                         .padding(.vertical, 30)
                     
