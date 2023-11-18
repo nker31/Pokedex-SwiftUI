@@ -20,7 +20,7 @@ struct PokedexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(authViewModel)
+            SplashScreenView().environmentObject(authViewModel)
                 .environmentObject(pokemonViewModel)
                 .environmentObject(myPokemonViewModel)
         }
