@@ -31,7 +31,7 @@ struct ProfileView: View {
                                     .cornerRadius(64)
                             }
                                                 
-                            Text("\(authViewModel.currentUser?.firstname ?? "Firstname")")
+                            Text("\(authViewModel.currentUser?.firstname ?? "Firstname") \(authViewModel.currentUser?.lastname ?? "Lastname")")
                                 .font(.title2)
                                 .bold()
                                 .foregroundStyle(.white)
